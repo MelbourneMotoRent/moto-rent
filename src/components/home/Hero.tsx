@@ -1,11 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
 import BookingForm from "@/components/ui/BookingForm";
 import { Shield, Clock, ThumbsUp } from "lucide-react";
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
+
       {/* Background photo */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=90&auto=format&fit=crop"
         alt=""
@@ -25,7 +28,12 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left — copy */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+
             {/* Badge */}
             <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -38,8 +46,7 @@ export default function Hero() {
             <h1 className="font-display font-bold text-white leading-[1.05] mb-6">
               <span className="block text-5xl sm:text-6xl lg:text-7xl">Book Your Car</span>
               <span className="block text-5xl sm:text-6xl lg:text-7xl">
-                in{" "}
-                <span className="text-amber-400">Melbourne</span>
+                in <span className="text-amber-400">Melbourne</span>
               </span>
               <span className="block text-5xl sm:text-6xl lg:text-7xl">Instantly</span>
             </h1>
@@ -79,12 +86,17 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right — booking form */}
-          <div>
+          {/* Right — booking form with delayed animation */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
             <BookingForm />
-          </div>
+          </motion.div>
+
         </div>
       </div>
 
