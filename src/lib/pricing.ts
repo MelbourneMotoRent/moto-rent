@@ -1,5 +1,4 @@
 import type { AddonItem, PriceBreakdown } from "@/types";
-
 // ─── Calculate Rental Price ───────────────────────────────────────────────────
 export function calculatePrice(
   dailyRate: number,
