@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import BookingForm from "@/components/ui/BookingForm";
 import { Shield, Clock, ThumbsUp } from "lucide-react";
-import type { SearchState } from "@/types";
-
+type SearchState = { pickupLocation: string; returnLocation: string; pickupDate: string; returnDate: string; rentalDays: number; };
 interface Props {
   onSearch?: (state: SearchState) => void;
 }
