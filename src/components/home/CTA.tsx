@@ -1,18 +1,17 @@
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden bg-amber-500 py-24">
+    <section className="relative overflow-hidden py-24" style={{ background: "linear-gradient(135deg, #1d4ed8 0%, #16a34a 100%)" }}>
       {/* Dot pattern */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, #fff 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       />
       {/* Blobs */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-amber-400/50 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-amber-700/30 rounded-full blur-3xl" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-green-400/30 rounded-full blur-3xl" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-6">
@@ -31,7 +30,7 @@ export default function CTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#fleet"
-            className="px-8 py-4 bg-white text-amber-600 font-black rounded-2xl hover:bg-amber-50 transition-all shadow-2xl hover:scale-105 active:scale-95 text-lg"
+            className="px-8 py-4 bg-white text-blue-700 font-black rounded-2xl hover:bg-blue-50 transition-all shadow-2xl hover:scale-105 active:scale-95 text-lg"
           >
             Browse Our Fleet →
           </a>
@@ -52,7 +51,7 @@ export default function CTA() {
             "Clean & Inspected",
           ].map((t) => (
             <div key={t} className="flex items-center gap-2 text-white/90 text-sm font-semibold">
-              <span className="text-white text-base">✓</span> {t}
+              <span className="text-green-300 text-base">✓</span> {t}
             </div>
           ))}
         </div>
