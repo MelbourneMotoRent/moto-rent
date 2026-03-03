@@ -3,10 +3,10 @@ import { cn, formatPrice } from "@/lib/utils";
 import type { Car } from "@/types";
 
 const FUEL_BADGE: Record<Car["fuel"], string> = {
-  Electric: "bg-emerald-500 text-white",
+  Electric: "bg-green-500 text-white",
   Hybrid:   "bg-teal-500 text-white",
-  Petrol:   "bg-sky-500 text-white",
-  Diesel:   "bg-amber-600 text-white",
+  Petrol:   "bg-blue-500 text-white",
+  Diesel:   "bg-blue-700 text-white",
 };
 
 export default function CarCard({ car }: { car: Car }) {
@@ -14,12 +14,12 @@ export default function CarCard({ car }: { car: Car }) {
     <article
       className={cn(
         "group bg-white rounded-2xl overflow-hidden border border-slate-100",
-        "hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300",
+        "hover:shadow-2xl hover:shadow-blue-100 hover:-translate-y-1.5 transition-all duration-300",
         !car.available && "opacity-60"
       )}
     >
       {/* Image */}
-      <div className="relative h-48 bg-gradient-to-br from-slate-200 to-slate-100 overflow-hidden">
+      <div className="relative h-48 bg-gradient-to-br from-blue-100 to-green-50 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={car.imageUrl}
@@ -49,7 +49,7 @@ export default function CarCard({ car }: { car: Car }) {
 
         {/* Rating */}
         <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
-          <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
           <span className="text-white text-xs font-bold">{car.rating}</span>
           <span className="text-white/60 text-xs">({car.reviewCount})</span>
         </div>
@@ -72,7 +72,7 @@ export default function CarCard({ car }: { car: Car }) {
             { Icon: Fuel,  label: car.fuel },
           ].map(({ Icon, label }) => (
             <div key={label} className="flex flex-col items-center gap-1.5 bg-slate-50 rounded-xl py-2.5">
-              <Icon className="w-4 h-4 text-amber-500" />
+              <Icon className="w-4 h-4 text-blue-600" />
               <span className="text-xs text-slate-600 font-semibold text-center leading-tight">{label}</span>
             </div>
           ))}
@@ -81,7 +81,7 @@ export default function CarCard({ car }: { car: Car }) {
         {/* Features */}
         <div className="flex flex-wrap gap-1.5 mb-5">
           {car.features.slice(0, 3).map((f) => (
-            <span key={f} className="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full font-medium">
+            <span key={f} className="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">
               <CheckCircle className="w-3 h-3" />
               {f}
             </span>
@@ -102,7 +102,7 @@ export default function CarCard({ car }: { car: Car }) {
             className={cn(
               "px-5 py-2.5 rounded-xl text-sm font-bold transition-all",
               car.available
-                ? "bg-amber-500 text-white hover:bg-amber-600 shadow-md hover:shadow-lg active:scale-95"
+                ? "bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white shadow-md hover:shadow-lg active:scale-95"
                 : "bg-slate-100 text-slate-400 cursor-not-allowed"
             )}
           >
