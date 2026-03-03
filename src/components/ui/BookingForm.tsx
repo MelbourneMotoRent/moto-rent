@@ -22,9 +22,9 @@ export default function BookingForm() {
   return (
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
       {/* Header */}
-      <div className="bg-amber-500 px-6 py-4">
+      <div className="bg-gradient-to-r from-blue-600 to-green-500 px-6 py-4">
         <h2 className="font-display font-bold text-xl text-white">Find Your Car</h2>
-        <p className="text-amber-100 text-sm mt-0.5">Instant booking · No credit card fees</p>
+        <p className="text-white/80 text-sm mt-0.5">Instant booking · No credit card fees</p>
       </div>
 
       <div className="p-6 space-y-5">
@@ -36,9 +36,9 @@ export default function BookingForm() {
           <button
             type="button"
             onClick={() => { setShowPickupList((v) => !v); setShowDropoffList(false); }}
-            className="w-full flex items-center gap-3 border-2 border-slate-200 hover:border-amber-400 focus:border-amber-500 rounded-xl px-4 py-3 text-left transition-colors bg-white"
+            className="w-full flex items-center gap-3 border-2 border-slate-200 hover:border-blue-400 focus:border-blue-500 rounded-xl px-4 py-3 text-left transition-colors bg-white"
           >
-            <MapPin className="w-4 h-4 text-amber-500 shrink-0" />
+            <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
             <span className="flex-1 text-sm font-semibold text-slate-800 truncate">{pickup}</span>
             <ChevronDown className={cn("w-4 h-4 text-slate-400 transition-transform", showPickupList && "rotate-180")} />
           </button>
@@ -51,10 +51,10 @@ export default function BookingForm() {
                   onClick={() => { setPickup(loc); setShowPickupList(false); }}
                   className={cn(
                     "w-full text-left px-4 py-3 text-sm flex items-center gap-2.5 transition-colors",
-                    pickup === loc ? "bg-amber-50 text-amber-700 font-semibold" : "text-slate-700 hover:bg-slate-50"
+                    pickup === loc ? "bg-blue-50 text-blue-700 font-semibold" : "text-slate-700 hover:bg-slate-50"
                   )}
                 >
-                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   {loc}
                 </button>
               ))}
@@ -70,9 +70,9 @@ export default function BookingForm() {
           <button
             type="button"
             onClick={() => { setShowDropoffList((v) => !v); setShowPickupList(false); }}
-            className="w-full flex items-center gap-3 border-2 border-slate-200 hover:border-amber-400 focus:border-amber-500 rounded-xl px-4 py-3 text-left transition-colors bg-white"
+            className="w-full flex items-center gap-3 border-2 border-slate-200 hover:border-blue-400 focus:border-blue-500 rounded-xl px-4 py-3 text-left transition-colors bg-white"
           >
-            <MapPin className="w-4 h-4 text-amber-500 shrink-0" />
+            <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
             <span className="flex-1 text-sm font-semibold text-slate-800 truncate">{dropoff}</span>
             <ChevronDown className={cn("w-4 h-4 text-slate-400 transition-transform", showDropoffList && "rotate-180")} />
           </button>
@@ -85,10 +85,10 @@ export default function BookingForm() {
                   onClick={() => { setDropoff(loc); setShowDropoffList(false); }}
                   className={cn(
                     "w-full text-left px-4 py-3 text-sm flex items-center gap-2.5 transition-colors",
-                    dropoff === loc ? "bg-amber-50 text-amber-700 font-semibold" : "text-slate-700 hover:bg-slate-50"
+                    dropoff === loc ? "bg-blue-50 text-blue-700 font-semibold" : "text-slate-700 hover:bg-slate-50"
                   )}
                 >
-                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   {loc}
                 </button>
               ))}
@@ -103,7 +103,7 @@ export default function BookingForm() {
               Pickup Date
             </label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500 pointer-events-none" />
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-600 pointer-events-none" />
               <input
                 type="date"
                 min={today}
@@ -112,7 +112,7 @@ export default function BookingForm() {
                   setFromDate(e.target.value);
                   if (toDate && e.target.value >= toDate) setToDate("");
                 }}
-                className="w-full pl-9 pr-3 py-3 border-2 border-slate-200 hover:border-amber-400 focus:border-amber-500 focus:outline-none rounded-xl text-sm font-semibold text-slate-800 transition-colors"
+                className="w-full pl-9 pr-3 py-3 border-2 border-slate-200 hover:border-blue-400 focus:border-blue-500 focus:outline-none rounded-xl text-sm font-semibold text-slate-800 transition-colors"
               />
             </div>
           </div>
@@ -121,13 +121,13 @@ export default function BookingForm() {
               Return Date
             </label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500 pointer-events-none" />
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-600 pointer-events-none" />
               <input
                 type="date"
                 min={fromDate || today}
                 value={toDate}
                 onChange={(e) => setToDate(e.target.value)}
-                className="w-full pl-9 pr-3 py-3 border-2 border-slate-200 hover:border-amber-400 focus:border-amber-500 focus:outline-none rounded-xl text-sm font-semibold text-slate-800 transition-colors"
+                className="w-full pl-9 pr-3 py-3 border-2 border-slate-200 hover:border-blue-400 focus:border-blue-500 focus:outline-none rounded-xl text-sm font-semibold text-slate-800 transition-colors"
               />
             </div>
           </div>
@@ -135,11 +135,9 @@ export default function BookingForm() {
 
         {/* Days summary */}
         {fromDate && toDate && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 flex items-center justify-between">
-            <span className="text-sm text-amber-800 font-medium">
-              Total rental duration
-            </span>
-            <span className="font-bold text-amber-700">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 flex items-center justify-between">
+            <span className="text-sm text-blue-800 font-medium">Total rental duration</span>
+            <span className="font-bold text-blue-700">
               {Math.round((new Date(toDate).getTime() - new Date(fromDate).getTime()) / 86400000)} days
             </span>
           </div>
@@ -149,7 +147,7 @@ export default function BookingForm() {
         <button
           type="button"
           onClick={handleSearch}
-          className="w-full flex items-center justify-center gap-2 py-4 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white font-bold text-base rounded-xl transition-all shadow-lg shadow-amber-500/30"
+          className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 active:scale-[0.98] text-white font-bold text-base rounded-xl transition-all shadow-lg shadow-blue-500/30"
         >
           Search Available Cars
           <ArrowRight className="w-5 h-5" />
