@@ -5,7 +5,9 @@ import { MapPin, Calendar, ArrowRight, ChevronDown } from "lucide-react";
 import { PICKUP_LOCATIONS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-export default function BookingForm() {
+type SearchState = { pickupLocation: string; returnLocation: string; pickupDate: string; returnDate: string; rentalDays: number; };
+interface Props { onSearch?: (state: SearchState) => void; }
+export default function BookingForm({ onSearch }: Props) {
   const [pickup,   setPickup]   = useState(PICKUP_LOCATIONS[0]);
   const [dropoff,  setDropoff]  = useState(PICKUP_LOCATIONS[0]);
   const [fromDate, setFromDate] = useState("");
