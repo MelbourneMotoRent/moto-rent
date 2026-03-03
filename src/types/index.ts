@@ -26,3 +26,46 @@ export interface FilterState {
   transmission: TransmissionType | "All";
   minSeats: number;
 }
+
+export interface SearchState {
+  pickupLocation: string;
+  returnLocation: string;
+  pickupDate: string;
+  returnDate: string;
+  rentalDays: number;
+}
+
+export interface AddonItem {
+  id: string;
+  name: string;
+  description: string;
+  pricePerDay: number;
+  selected: boolean;
+}
+
+export interface PriceBreakdown {
+  dailyRate: number;
+  rentalDays: number;
+  basePrice: number;
+  discountLabel: string;
+  discountPct: number;
+  discountAmount: number;
+  addonsTotal: number;
+  subtotal: number;
+  gst: number;
+  total: number;
+}
+
+export interface BookingFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  licenseNumber: string;
+  licenseExpiry: string;
+  dateOfBirth: string;
+  search: SearchState;
+  car: Car;
+  addons: AddonItem[];
+  price: PriceBreakdown;
+}
