@@ -1,31 +1,25 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
-const playfair = Playfair_Display({
+const display = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
+const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "MelDrive — Car Rental Melbourne",
+  title: "GlideGo Car Rentals — Melbourne's #1 Car Hire",
   description:
-    "Book premium rental cars in Melbourne instantly. Pick up from the airport, CBD or any suburb. No hidden fees, free cancellation.",
-  keywords: ["car rental Melbourne", "rent a car Melbourne", "Melbourne airport car hire"],
-  openGraph: {
-    title: "MelDrive — Car Rental Melbourne",
-    description: "Book your car in Melbourne instantly. 500+ vehicles, 12 locations.",
-    type: "website",
-  },
+    "Book quality cars across Melbourne. 500+ vehicles, 70+ pickup locations, instant booking. Airport, CBD, suburbs — we've got you covered.",
 };
 
 export default function RootLayout({
@@ -34,8 +28,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
