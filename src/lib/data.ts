@@ -1,14 +1,89 @@
 import type { Car } from "@/types";
 
 export const PICKUP_LOCATIONS = [
+  // Airports
   "Melbourne Airport (MEL)",
+  "Avalon Airport (AVV)",
+
+  // CBD & Inner City
   "CBD – Collins Street",
-  "South Yarra",
-  "St Kilda",
+  "CBD – Flinders Street",
   "Docklands",
   "Southbank",
+  "South Melbourne",
+
+  // Inner Suburbs
+  "South Yarra",
+  "St Kilda",
   "Richmond",
   "Fitzroy",
+  "Collingwood",
+  "Carlton",
+  "Brunswick",
+  "Prahran",
+  "Windsor",
+  "Toorak",
+  "Hawthorn",
+  "Camberwell",
+
+  // Eastern Suburbs
+  "Box Hill",
+  "Ringwood",
+  "Croydon",
+  "Lilydale",
+  "Mooroolbark",
+  "Doncaster",
+  "Templestowe",
+  "Nunawading",
+  "Mitcham",
+  "Vermont",
+
+  // Northern Suburbs
+  "Tullamarine",
+  "Essendon",
+  "Coburg",
+  "Preston",
+  "Reservoir",
+  "Thomastown",
+  "Epping",
+  "Craigieburn",
+  "Broadmeadows",
+  "Bundoora",
+
+  // Western Suburbs
+  "Sunshine",
+  "Footscray",
+  "Werribee",
+  "Hoppers Crossing",
+  "Point Cook",
+  "Altona",
+  "Williamstown",
+  "Melton",
+  "Deer Park",
+  "Laverton",
+
+  // Southern Suburbs
+  "Dandenong",
+  "Frankston",
+  "Moorabbin",
+  "Cheltenham",
+  "Springvale",
+  "Noble Park",
+  "Pakenham",
+  "Cranbourne",
+  "Berwick",
+  "Narre Warren",
+
+  // South-Eastern Suburbs
+  "Glen Waverley",
+  "Mount Waverley",
+  "Mulgrave",
+  "Wheelers Hill",
+  "Clayton",
+  "Oakleigh",
+  "Chadstone",
+  "Bentleigh",
+  "Moorabbin Airport",
 ];
 
 export const CARS: Car[] = [
