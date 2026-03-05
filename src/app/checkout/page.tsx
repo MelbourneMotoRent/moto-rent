@@ -80,7 +80,44 @@ function CheckoutContent() {
           <h1 className="text-2xl font-bold text-gray-900">Complete Your Booking</h1>
           <p className="text-gray-500 mt-1">Melbourne Car Rentals</p>
         </div>
-
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           {clientSecret && (
-            <E
+            <Elements
+              stripe={stripePromise}
+              options={{
+                clientSecret,
+                appearance: {
+                  theme: 'stripe',
+                  variables: {
+                    colorPrimary: '#2563eb',
+                    borderRadius: '8px',
+                  },
+                },
+              }}
+            >
+              <CheckoutForm
+                bookingId={bookingId!}
+                totalAmount={totalAmount}
+                onSuccess={handlePaymentSuccess}
+              />
+            </Elements>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full" />
+        </div>
+      }
+    >
+      <CheckoutContent />
+    </Suspense>
+  );
+}
