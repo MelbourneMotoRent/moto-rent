@@ -71,4 +71,12 @@ export async function POST(req: NextRequest) {
         .update({ status: 'refunded' })
         .eq('stripe_payment_intent_id', paymentIntentId);
 
-      break
+      break;
+    }
+
+    default:
+      console.log(`Unhandled event type: ${event.type}`);
+  }
+
+  return NextResponse.json({ received: true });
+}
