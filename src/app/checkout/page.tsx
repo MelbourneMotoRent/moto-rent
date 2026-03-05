@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useSearchParams } from 'next/navigation';
@@ -8,7 +8,7 @@ import CheckoutForm from '@/components/CheckoutForm';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get('bookingId');
   const totalAmount = parseFloat(searchParams.get('amount') || '0');
@@ -83,28 +83,4 @@ export default function CheckoutPage() {
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
           {clientSecret && (
-            <Elements
-              stripe={stripePromise}
-              options={{
-                clientSecret,
-                appearance: {
-                  theme: 'stripe',
-                  variables: {
-                    colorPrimary: '#2563eb',
-                    borderRadius: '8px',
-                  },
-                },
-              }}
-            >
-              <CheckoutForm
-                bookingId={bookingId!}
-                totalAmount={totalAmount}
-                onSuccess={handlePaymentSuccess}
-              />
-            </Elements>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
+            <E
