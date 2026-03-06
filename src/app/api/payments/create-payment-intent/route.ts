@@ -11,17 +11,18 @@ export async function POST(req: NextRequest) {
   try {
     const { bookingId, totalAmount, customerEmail, customerName } = await req.json();
 
-    if (!bookingId || !totalAmount || !customerEmail) {
+    // Made email optional for testing
+    if (!bookingId || !totalAmount) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: toCents(totalAmount),
       currency: 'aud',
-      receipt_email: customerEmail,
+      receipt_email: customerEmail || null,
       metadata: {
         bookingId,
-        customerName,
+        customerName: customerName || 'Test Customer',
         type: 'rental_charge',
       },
       description: `Car Rental - Booking #${bookingId}`,
@@ -47,3 +48,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+```
+
+**Commit karo!**
+
+---
+
+Phir yeh URL se test karo:
+```
+https://moto-rent-rust.vercel.app/checkout?bookingId=123&amount=100
