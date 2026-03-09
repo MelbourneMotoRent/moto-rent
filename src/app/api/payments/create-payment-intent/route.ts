@@ -9,9 +9,8 @@ const supabase = createClient(
 
 export async function POST(req: NextRequest) {
   try {
-    const { bookingId, totalAmount, customerEmail, customerName } = await req.json();
+    const { bookingId, totalAmount, customerEmail, customerName, skipDatabase } = await req.json();
 
-    // Made email optional for testing
     if (!bookingId || !totalAmount) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
@@ -28,15 +27,18 @@ export async function POST(req: NextRequest) {
       description: `Car Rental - Booking #${bookingId}`,
     });
 
-    await supabase
-      .from('payments')
-      .insert({
-        booking_id: bookingId,
-        stripe_payment_intent_id: paymentIntent.id,
-        amount: totalAmount,
-        status: 'pending',
-        type: 'rental',
-      });
+    // Only save to database if not in test mode
+    if (!skipDatabase) {
+      await supabase
+        .from('payments')
+        .insert({
+          booking_id: bookingId,
+          stripe_payment_intent_id: paymentIntent.id,
+          amount: totalAmount,
+          status: 'pending',
+          type: 'rental',
+        });
+    }
 
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
@@ -48,12 +50,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
-```
 
-**Commit karo!**
-
----
-
-Phir yeh URL se test karo:
-```
 https://moto-rent-rust.vercel.app/checkout?bookingId=123&amount=100
