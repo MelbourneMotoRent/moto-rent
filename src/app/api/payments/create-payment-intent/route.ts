@@ -51,4 +51,3 @@ export async function POST(req: NextRequest) {
   }
 }
 
-https://moto-rent-rust.vercel.app/checkout?bookingId=123&amount=100
