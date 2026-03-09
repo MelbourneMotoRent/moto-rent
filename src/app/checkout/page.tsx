@@ -18,16 +18,22 @@ function CheckoutContent() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!bookingId || !totalAmount) return;
+    if (!bookingId || !totalAmount) {
+      setError('Missing required fields');
+      setIsLoading(false);
+      return;
+    }
 
+    // Direct Stripe Payment Intent - no Supabase needed for testing
     fetch('/api/payments/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         bookingId,
         totalAmount,
-        customerEmail: '',
-        customerName: '',
+        customerEmail: 'test@test.com',
+        customerName: 'Test Customer',
+        skipDatabase: true, // test mode
       }),
     })
       .then((res) => res.json())
